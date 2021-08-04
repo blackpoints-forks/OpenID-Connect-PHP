@@ -814,6 +814,7 @@ class OpenIDConnectClient
         // Consider Basic authentication if provider config is set this way
         if (in_array('client_secret_basic', $token_endpoint_auth_methods_supported, true)) {
             $headers = ['Authorization: Basic ' . base64_encode(urlencode($this->clientID) . ':' . urlencode($this->clientSecret))];
+            unset($token_params['client_id']);
             unset($token_params['client_secret']);
         }
 
